@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsqsbr0py8fkf"]
+
+[ext_resource type="Script" path="res://bola_do_inimigo.gd" id="1_ggu00"]
+[ext_resource type="Texture2D" uid="uid://8kms2xt147gc" path="res://assets/bolinha inimigo-1.png.png" id="1_hythd"]
+
+[node name="bola do inimigo" type="Node2D"]
+script = ExtResource("1_ggu00")
+
+[node name="BolinhaInimigo-1_png" type="Sprite2D" parent="."]
+texture = ExtResource("1_hythd")
+
+[node name="criar bolinha" type="Timer" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="timeout" from="criar bolinha" to="." method="_on_criar_bolinha_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

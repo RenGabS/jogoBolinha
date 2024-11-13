@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://byki8v50pyox7"]
+
+[ext_resource type="Texture2D" uid="uid://dos51j5q5wo3x" path="res://assets/Design sem nome (1).png" id="1_1ydgo"]
+[ext_resource type="Script" path="res://renam.gd" id="2_c2rxn"]
+[ext_resource type="Texture2D" uid="uid://ch6vydxemgrv0" path="res://assets/l0_sprite_jogador1.png" id="2_r3c7g"]
+[ext_resource type="Texture2D" uid="uid://bcewpfdj51m3i" path="res://assets/l0_sprite_jogador2.png" id="4_2wqf6"]
+[ext_resource type="Texture2D" uid="uid://dcjxtfj03ijmr" path="res://assets/l0_sprite_lançarbolinha1.png" id="4_l12lk"]
+[ext_resource type="Texture2D" uid="uid://dkb3v18ep1wim" path="res://assets/l0_sprite_jogador3.png" id="5_0cbmn"]
+[ext_resource type="Texture2D" uid="uid://drl0bdjuk7m5d" path="res://assets/l0_sprite_lançarbolinha3.png" id="5_eiwud"]
+[ext_resource type="Texture2D" uid="uid://bgw8ogknr8koc" path="res://assets/l0_sprite_lançarbolinha2.png" id="6_63ebr"]
+[ext_resource type="PackedScene" uid="uid://btho60c08k30p" path="res://bolinha.tscn" id="6_83moa"]
+[ext_resource type="PackedScene" uid="uid://cpnmt008yixnt" path="res://inimigo.tscn" id="10_5yvv5"]
+[ext_resource type="PackedScene" uid="uid://dsqsbr0py8fkf" path="res://bola_do_inimigo.tscn" id="11_iykbr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5qej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r3c7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l12lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_63ebr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eiwud")
+}],
+"loop": true,
+"name": &"jogar",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r3c7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2wqf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0cbmn")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[node name="game" type="Node2D"]
+position = Vector2(1, 0)
+
+[node name="DesignSemNome(1)" type="Sprite2D" parent="."]
+position = Vector2(428, 426)
+scale = Vector2(2.63662, 2.03765)
+texture = ExtResource("1_1ydgo")
+
+[node name="renam" type="Node2D" parent="."]
+z_as_relative = false
+position = Vector2(313, 518)
+scale = Vector2(-0.739619, 0.377835)
+script = ExtResource("2_c2rxn")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="renam"]
+position = Vector2(-27.0409, 76.7531)
+scale = Vector2(0.556747, 1.09672)
+sprite_frames = SubResource("SpriteFrames_v5qej")
+animation = &"jogar"
+frame_progress = 0.203912
+speed_scale = 0.5
+
+[node name="bolinha" parent="." instance=ExtResource("6_83moa")]
+position = Vector2(-199, 411)
+
+[node name="inimigo" parent="." instance=ExtResource("10_5yvv5")]
+position = Vector2(337, 140)
+rotation = 3.13478
+scale = Vector2(0.41573, 0.376974)
+
+[node name="bola do inimigo" parent="." instance=ExtResource("11_iykbr")]
+position = Vector2(-83, 83)
+
+[node name="inimigo2" parent="." instance=ExtResource("10_5yvv5")]
+position = Vector2(457, 261)
+rotation = -0.0129913
+scale = Vector2(0.482225, -0.259625)
+skew = -0.00133562
+
+[node name="inimigo3" parent="." instance=ExtResource("10_5yvv5")]
+position = Vector2(660, 262)
+rotation = -3.09776
+scale = Vector2(0.474522, 0.362682)
+skew = -0.0204732
+
+[node name="inimigo4" parent="." instance=ExtResource("10_5yvv5")]
+position = Vector2(557, 140)
+rotation = -3.18064
+scale = Vector2(0.458136, 0.287828)
+skew = -0.00807619
+
+[node name="inimigo5" parent="." instance=ExtResource("10_5yvv5")]
+position = Vector2(300, 257)
+rotation = -3.12575
+scale = Vector2(0.421639, 0.33644)
+skew = -0.00807619
+
+[node name="inimigo6" parent="." instance=ExtResource("10_5yvv5")]
+position = Vector2(714, 145)
+rotation = -0.0129913
+scale = Vector2(0.341432, 0.287493)
+skew = -0.00133562

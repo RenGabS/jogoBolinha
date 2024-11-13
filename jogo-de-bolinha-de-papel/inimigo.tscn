@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpnmt008yixnt"]
+
+[ext_resource type="Script" path="res://inimigo.gd" id="1_8pcr0"]
+[ext_resource type="Texture2D" uid="uid://cpjfb3s3q2cws" path="res://assets/enimigo-1.png.png" id="1_8pv8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s68su"]
+size = Vector2(128, 63)
+
+[node name="inimigo" type="Node2D"]
+script = ExtResource("1_8pcr0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, -0.5)
+shape = SubResource("RectangleShape2D_s68su")
+
+[node name="Enimigo-1_png" type="Sprite2D" parent="."]
+position = Vector2(7, 81)
+texture = ExtResource("1_8pv8b")
+
+[node name="Timer" type="Timer" parent="Enimigo-1_png"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Enimigo-1_png/Timer" to="." method="_on_timer_timeout"]
